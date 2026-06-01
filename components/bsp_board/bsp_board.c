@@ -1,23 +1,22 @@
 #include <stdio.h>
 #include "bsp_board.h"
 
-//designated initializers technique
-volatile uint32_t bsp_led_Vector_Gpio_Map [] = {
-	[BSP_VECTOR_LED0]  = GPIO2,
-	[BSP_VECTOR_LED1]  = GPIO4,
-	[BSP_VECTOR_LED2]  = GPIO16,
-	[BSP_VECTOR_LED3]  = GPIO17,
-	[BSP_VECTOR_LED4]  = GPIO5
+static uint8_t bsp_led_vector = 0;
+static uint8_t bsp_rgb_vector = 0;
+
+uint32_t bsp_led_Vector_Gpio_Map [] = {
+	[GPIO2]  = BSP_VECTOR_LED0,
+	[GPIO4]  = BSP_VECTOR_LED1,
+	[GPIO16] = BSP_VECTOR_LED2,
+	[GPIO17] = BSP_VECTOR_LED3,
+	[GPIO5]  = BSP_VECTOR_LED4
 };
 
-volatile uint32_t bsp_RGB_Vector_Gpio_Map [] = {
-	[BSP_VECTOR_LEDRED]    = GPIO14,
-	[BSP_VECTOR_LEDGREEN]  = GPIO13,
-	[BSP_VECTOR_LEDBLUE]   = GPIO12
+uint32_t bsp_RGB_Vector_Gpio_Map [] = {
+	[GPIO14] = BSP_VECTOR_LEDRED,
+	[GPIO13] = BSP_VECTOR_LEDGREEN,
+	[GPIO12] = BSP_VECTOR_LEDBLUE
 };
-
-bsp_status_vector_leds_t bsp_board_leds_vector = {0};
-bsp_status_RGB_vector_t  bsp_board_rgb_vector = {0};
 
 void bsp_init(void){
 	// ========== Configure Board leds as outputs ========== 
@@ -49,35 +48,42 @@ void bsp_init(void){
 	gpio_write(BSP_RGB_BLUELED,  true);
 }
 
+bool bsp_get_bit_vector_led(uint8_t bit){
+	return ((bsp_led_vector & (1<<bit)) != 0);
+}
+
+bool bsp_get_bit_vector_RGB(uint8_t bit){
+	return ((bsp_rgb_vector & (1<<bit)) != 0);
+}
+
 void bsp_led_on(int led){
 	gpio_write(led, true);
-	bsp_board_leds_vector.bsp_led_vector |= (1<<led);
+	bsp_led_vector |= (1<<led);
 }
 
 void bsp_led_off(int led){
 	gpio_write(led, false);
-	bsp_board_leds_vector.bsp_led_vector &= ~(1<<led);
+	bsp_led_vector &= ~(1<<led);
 }
 
 void bsp_led_toggle(int led){
-        gpio_write(led, !BSP_GET_BIT_VECTOR_LED(bsp_board_leds_vector, led));
-        bsp_board_leds_vector.bsp_led_vector ^= (1<<led);
-        //printf("%d\n", boardleds_vector.board_led_reg);
+        gpio_write(led, !bsp_get_bit_vector_led(bsp_led_Vector_Gpio_Map[led]));
+        bsp_led_vector ^= (1<<bsp_led_Vector_Gpio_Map[led]);
 }
 
 void bsp_RGB_on(int led){
 	gpio_write(led, true);
-	bsp_board_rgb_vector.bsp_rgb_vector |= (1<<led);
+	bsp_rgb_vector |= (1<<led);
 }
 
 void bsp_RGB_off(int led){
 	gpio_write(led, false);
-	bsp_board_rgb_vector.bsp_rgb_vector &= ~(1<<led);
+	bsp_rgb_vector &= ~(1<<led);
 }
 
 void bsp_RGB_led_toggle(int led){
-	gpio_write(led,  !BSP_GET_BIT_VECTOR_RGB(bsp_board_rgb_vector, led));
-	bsp_board_rgb_vector.bsp_rgb_vector ^= (1<<led);
+	gpio_write(led,  !bsp_get_bit_vector_RGB(bsp_RGB_Vector_Gpio_Map[led]));
+	bsp_rgb_vector ^= (1<<bsp_RGB_Vector_Gpio_Map[led]);
 }
 
 bool bsp_boton_presionado(int button){

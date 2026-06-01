@@ -17,8 +17,6 @@
 #define BSP_PUSH_BUTTON_0 GPIO18
 #define BSP_PUSH_BUTTON_1 GPIO19
 
-
-// ======================Enums=====================
 typedef enum{
 	BSP_VECTOR_LED0 = 0,
 	BSP_VECTOR_LED1 = 1,
@@ -33,37 +31,11 @@ typedef enum{
 	BSP_VECTOR_LEDBLUE = 2,
 } bsp_ivector_rgb_t;
 
-//  =============== Union of structs to handle Board leds =============== 
-typedef union
-{
-    struct
-    {
-        uint8_t bsp_vector_led0_state : 1;
-        uint8_t bsp_vector_led1_state : 1;
-        uint8_t bsp_vector_led2_state : 1;
-        uint8_t bsp_vector_led3_state : 1;
-        uint8_t bsp_vector_led4_state : 1;
-    };
+//  =============== Vector state of board leds =============== 
+bool bsp_get_bit_vector_led(uint8_t bit);
 
-    uint8_t bsp_led_vector;
-
-} bsp_status_vector_leds_t; 
-#define BSP_GET_BIT_VECTOR_LED(x, y) ((x.bsp_led_vector & (1<<y)) != 0)
-
-//  =============== Union of structs to handle RGB leds =============== 
-typedef union
-{
-    struct
-    {
-        uint8_t bsp_rgb_vector_red_state   : 1;
-        uint8_t bsp_rgb_vector_green_state : 1;
-        uint8_t bsp_rgb_vector_blue_state  : 1;
-    };
-
-    uint8_t bsp_rgb_vector;
-
-} bsp_status_RGB_vector_t;
-#define BSP_GET_BIT_VECTOR_RGB(x, y) ((x.bsp_rgb_vector & (1<<y)) != 0)
+//  =============== Vector state of RGB vector =============== 
+bool bsp_get_bit_vector_RGB(uint8_t bit);
 
 // =============== Function prototypes for BSP =============== 
 // Initialize the boards components

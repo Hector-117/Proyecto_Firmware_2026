@@ -42,14 +42,14 @@ void app_main(void)
 		state_pin19 = gpio_read(BSP_PUSH_BUTTON_1);
 
 		if ((state_pin18 == false) && (state_pin18_old == true)){ //DETECCIÓN DE FALNCO DESCENDENTE EN PIN18
-			printf("Boton 1 presionado ching cheng han ji\n");
+			printf("Boton 1 presionado lobov pakos kaya\n");
 			led_state_18[0] = !led_state_18[0]; //CAMBIO DE ESTADO DEL LED1
 			led_state_18[1] = !led_state_18[1]; //CAMBOI DE ESTADO DEL LED2
 		}
 		state_pin18_old = state_pin18;
 
 		if ((state_pin19 == false) && (state_pin19_old == true)){ //DETECCIÓN DE FALNCO DESCENDENTE EN PIN18
-			printf("Boton 2 presionado ching chong chang\n");
+			printf("Boton 2 presionado nasooooooooooon\n");
 			led_state_19[0] = !led_state_19[0]; //CAMBIO DE ESTADO DEL LED1
 			led_state_19[1] = !led_state_19[1]; //CAMBOI DE ESTADO DEL LED2
 		}
