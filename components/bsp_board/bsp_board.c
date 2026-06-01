@@ -18,34 +18,38 @@ uint32_t bsp_RGB_Vector_Gpio_Map [] = {
 	[GPIO12] = BSP_VECTOR_LEDBLUE
 };
 
+uint32_t board_element_leds [] = {
+	BSP_LED0,
+	BSP_LED1,
+	BSP_LED2,
+	BSP_LED3,
+	BSP_LED4,
+};
+
+uint32_t board_element_rgb [] = {
+	BSP_RGB_REDLED,
+	BSP_RGB_GREENLED,
+	BSP_RGB_BLUELED
+};
+
 void bsp_init(void){
-	// ========== Configure Board leds as outputs ========== 
-	gpio_config_out(BSP_LED0);
-	gpio_config_out(BSP_LED1);
-	gpio_config_out(BSP_LED2);
-	gpio_config_out(BSP_LED3);
-	gpio_config_out(BSP_LED4);
+	int board_element_leds_lenght = sizeof(board_element_leds) / sizeof(board_element_leds[0]);
+	int board_element_rgb_lenght = sizeof(board_element_rgb) / sizeof(board_element_rgb[0]);
+
+	for (int i = 0; i < board_element_leds_lenght; i++){
+		gpio_config_out(board_element_leds[i]);
+		gpio_write(board_element_leds[i], false);
+	}
 	
-	// ========== Configure RGB leds as outputs ==========
-	gpio_config_out(BSP_RGB_REDLED);
-	gpio_config_out(BSP_RGB_GREENLED);
-	gpio_config_out(BSP_RGB_BLUELED);
+	for (int i = 0; i < board_element_rgb_lenght; i++){
+		gpio_config_out(board_element_rgb[i]);
+		gpio_write(board_element_rgb[i], true);
+	}
 	
 	// ========== Configure buttons as inputs ==========
 	gpio_config_in(BSP_PUSH_BUTTON_0, PULL_UP);
 	gpio_config_in(BSP_PUSH_BUTTON_1, PULL_UP);
 	
-	// initial state of each boardled
-	gpio_write(BSP_LED0, false);
-	gpio_write(BSP_LED1, false);
-	gpio_write(BSP_LED2, false);
-	gpio_write(BSP_LED3, false);
-	gpio_write(BSP_LED4, false);
-	
-	// initial state of each RGB led
-	gpio_write(BSP_RGB_REDLED,   true);
-	gpio_write(BSP_RGB_GREENLED, true);
-	gpio_write(BSP_RGB_BLUELED,  true);
 }
 
 bool bsp_get_bit_vector_led(uint8_t bit){
