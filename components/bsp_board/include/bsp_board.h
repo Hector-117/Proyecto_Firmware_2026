@@ -4,18 +4,18 @@
 #include "../../gpio_2026/include/gpio_2026.h"
 
 // =============== Name abstraction for board =============== 
-#define BSP_LED0 GPIO2
-#define BSP_LED1 GPIO4
-#define BSP_LED2 GPIO16
-#define BSP_LED3 GPIO17
-#define BSP_LED4 GPIO5
+#define BSP_LED0 LL_GPIO2
+#define BSP_LED1 LL_GPIO4
+#define BSP_LED2 LL_GPIO16
+#define BSP_LED3 LL_GPIO17
+#define BSP_LED4 LL_GPIO5
 
-#define BSP_RGB_REDLED   GPIO14
-#define BSP_RGB_GREENLED GPIO13
-#define BSP_RGB_BLUELED  GPIO12
+#define BSP_RGB_REDLED   LL_GPIO14
+#define BSP_RGB_GREENLED LL_GPIO13
+#define BSP_RGB_BLUELED  LL_GPIO12
 
-#define BSP_PUSH_BUTTON_0 GPIO18
-#define BSP_PUSH_BUTTON_1 GPIO19
+#define BSP_PUSH_BUTTON_0 LL_GPIO18
+#define BSP_PUSH_BUTTON_1 LL_GPIO19
 
 typedef enum{
 	BSP_VECTOR_LED0 = 0,
