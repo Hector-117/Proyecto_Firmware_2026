@@ -38,18 +38,18 @@ void app_main(void)
 	while(true){
 		//state_pin18 = gpio_read(GPIO18);
 		//state_pin19 = gpio_read(GPIO19);
-		state_pin18 = gpio_read(PUSH_BUTTON_1);
-		state_pin19 = gpio_read(PUSH_BUTTON_2);
+		state_pin18 = gpio_read(BSP_PUSH_BUTTON_0);
+		state_pin19 = gpio_read(BSP_PUSH_BUTTON_1);
 
 		if ((state_pin18 == false) && (state_pin18_old == true)){ //DETECCIÓN DE FALNCO DESCENDENTE EN PIN18
-			printf("Boton 1 presionado anoda dei jas goon\n");
+			printf("Boton 1 presionado ching cheng han ji\n");
 			led_state_18[0] = !led_state_18[0]; //CAMBIO DE ESTADO DEL LED1
 			led_state_18[1] = !led_state_18[1]; //CAMBOI DE ESTADO DEL LED2
 		}
 		state_pin18_old = state_pin18;
 
 		if ((state_pin19 == false) && (state_pin19_old == true)){ //DETECCIÓN DE FALNCO DESCENDENTE EN PIN18
-			printf("Boton 2 presionado enai still alonee\n");
+			printf("Boton 2 presionado ching chong chang\n");
 			led_state_19[0] = !led_state_19[0]; //CAMBIO DE ESTADO DEL LED1
 			led_state_19[1] = !led_state_19[1]; //CAMBOI DE ESTADO DEL LED2
 		}
@@ -60,15 +60,15 @@ void app_main(void)
 		//APAGADO DE LED 
 	    //vTaskDelay(1000 / portTICK_PERIOD_MS);  //RETRAZO DE 5 SEGUNDOS
 	    
-	    bsp_led_toggle(LED1);
-	    bsp_led_toggle(LED2);
-	    bsp_led_toggle(LED3);
-	    bsp_led_toggle(LED4);
-	    bsp_led_toggle(LED5);
+	    bsp_led_toggle(BSP_LED0);
+	    bsp_led_toggle(BSP_LED1);
+	    bsp_led_toggle(BSP_LED2);
+	    bsp_led_toggle(BSP_LED3);
+	    bsp_led_toggle(BSP_LED4);
 	    
-	    bsp_RGB_led_toggle(LEDRED);
-	    bsp_RGB_led_toggle(LEDGREEN);
-	    bsp_RGB_led_toggle(LEDBLUE);
+	    bsp_RGB_led_toggle(BSP_RGB_REDLED);
+	    bsp_RGB_led_toggle(BSP_RGB_GREENLED);
+	    bsp_RGB_led_toggle(BSP_RGB_BLUELED);
 	    	    
 	    
 	    /*gpio_write(GPIO2, true);
