@@ -17,6 +17,25 @@
 #define PUSH_BUTTON_1 GPIO18
 #define PUSH_BUTTON_2 GPIO19
 
+
+// ======================Enums=====================
+typedef enum{
+	LED1 = 0,
+	LED2 = 1,
+	LED3 = 2,
+	LED4 = 3,
+	LED5 = 4,
+} board_led_t;
+
+typedef enum{
+	LEDRED = 0,
+	LEDGREEN = 1,
+	LEDBLUE = 2,
+} board_rgb_t;
+
+// ========map enum leds with real GPIO value ========
+
+
 //  =============== Union of structs to handle Board leds =============== 
 typedef union
 {
@@ -32,7 +51,7 @@ typedef union
     uint8_t board_led_reg;
 
 } STATUS_BOARD_LEDS_t;
-#define GET_BIT_VECTOR_BOARD_LED_REG(x, y) ((x.board_led_reg &= (1<<y)) != 0)
+#define GET_BIT_VECTOR_BOARD_LED_REG(x, y) ((x.board_led_reg & (1<<y)) != 0)
 
 //  =============== Union of structs to handle RGB leds =============== 
 typedef union
@@ -47,7 +66,7 @@ typedef union
     uint8_t rgb_reg;
 
 } STATUS_RGB_t;
-#define GET_BIT_VECTOR_RGB(x, y) ((x.rgb_reg &= (1<<y)) != 0)
+#define GET_BIT_VECTOR_RGB(x, y) ((x.rgb_reg & (1<<y)) != 0)
 
 // =============== Function prototypes for BSP =============== 
 // Initialize the boards components
@@ -56,12 +75,12 @@ void bsp_init(void);
 // Abstraction for board leds
 void bsp_led_on(int led);
 void bsp_led_off(int led);
-void bsp_led_toggle(int led);
+void bsp_led_toggle(board_led_t led);
 
 // Abstraction for RGB leds
 void bsp_RGB_on(int led);
 void bsp_RGB_off(int led);
-void bsp_RGB_led_toggle(int led);
+void bsp_RGB_led_toggle(board_rgb_t led);
 
 
 // Abstraction for board buttons

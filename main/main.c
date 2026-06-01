@@ -58,17 +58,17 @@ void app_main(void)
 
 		// ===== CONTROL PRUEBA LEDS CHIDILLOS =====
 		//APAGADO DE LED 
-	    vTaskDelay(1000 / portTICK_PERIOD_MS);  //RETRAZO DE 5 SEGUNDOS
+	    //vTaskDelay(1000 / portTICK_PERIOD_MS);  //RETRAZO DE 5 SEGUNDOS
 	    
-	    bsp_led_toggle(GPIO2);
-	    bsp_led_toggle(GPIO4);
-	    bsp_led_toggle(GPIO5);
-	    bsp_led_toggle(GPIO16);
-	    bsp_led_toggle(GPIO17);
+	    bsp_led_toggle(LED1);
+	    bsp_led_toggle(LED2);
+	    bsp_led_toggle(LED3);
+	    bsp_led_toggle(LED4);
+	    bsp_led_toggle(LED5);
 	    
-	    bsp_RGB_led_toggle(GPIO12);
-	    bsp_RGB_led_toggle(GPIO13);
-	    bsp_RGB_led_toggle(GPIO14);
+	    bsp_RGB_led_toggle(LEDRED);
+	    bsp_RGB_led_toggle(LEDGREEN);
+	    bsp_RGB_led_toggle(LEDBLUE);
 	    	    
 	    
 	    /*gpio_write(GPIO2, true);
@@ -89,7 +89,7 @@ void app_main(void)
 
 
 	    //ENCENDIDO DE LED
-	    //vTaskDelay(1000 / portTICK_PERIOD_MS); //RETRAZO DE 5 SEGUNDOS
+	    vTaskDelay(1000 / portTICK_PERIOD_MS); //RETRAZO DE 5 SEGUNDOS
 	    /*gpio_write(GPIO2, false);
 	    gpio_write(GPIO4, false);
 	    gpio_write(GPIO5, false);
