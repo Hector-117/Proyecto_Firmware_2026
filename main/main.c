@@ -38,18 +38,20 @@ void app_main(void)
 	while(true){
 		//state_pin18 = gpio_read(GPIO18);
 		//state_pin19 = gpio_read(GPIO19);
-		state_pin18 = ll_gpio_read(BSP_PUSH_BUTTON_0);
-		state_pin19 = ll_gpio_read(BSP_PUSH_BUTTON_1);
+		//state_pin18 = ll_gpio_read(BSP_PUSH_BUTTON_0);
+		//state_pin19 = ll_gpio_read(BSP_PUSH_BUTTON_1);
+		state_pin18 = bsp_pressed_button(BSP_PUSH_BUTTON_0);
+		state_pin19 = bsp_pressed_button(BSP_PUSH_BUTTON_1);
 
 		if ((state_pin18 == false) && (state_pin18_old == true)){ //DETECCIÓN DE FALNCO DESCENDENTE EN PIN18
-			printf("Boton 1 presionado tengo sueeeeeeeeñooooo\n");
+			printf("Boton 1 presionado is this the rea lai\n");
 			led_state_18[0] = !led_state_18[0]; //CAMBIO DE ESTADO DEL LED1
 			led_state_18[1] = !led_state_18[1]; //CAMBOI DE ESTADO DEL LED2
 		}
 		state_pin18_old = state_pin18;
 
 		if ((state_pin19 == false) && (state_pin19_old == true)){ //DETECCIÓN DE FALNCO DESCENDENTE EN PIN18
-			printf("Boton 2 presionado una weba inmensaaa\n");
+			printf("Boton 2 presionado or is yos fentasi\n");
 			led_state_19[0] = !led_state_19[0]; //CAMBIO DE ESTADO DEL LED1
 			led_state_19[1] = !led_state_19[1]; //CAMBOI DE ESTADO DEL LED2
 		}

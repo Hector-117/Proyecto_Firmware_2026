@@ -90,6 +90,6 @@ void bsp_RGB_led_toggle(int led){
 	bsp_rgb_vector ^= (1<<bsp_RGB_Vector_Gpio_Map[led]);
 }
 
-bool bsp_boton_presionado(int button){
+bool bsp_pressed_button(int button){
 	return (ll_gpio_read(button) == 1);
 }
