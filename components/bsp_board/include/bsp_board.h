@@ -65,7 +65,7 @@ void bsp_RGB_led_toggle(int led);
 
 
 // Abstraction for board buttons
-bool bsp_pressed_button(int button);
+bool bsp_boton_presionado(int button);
 
 
 

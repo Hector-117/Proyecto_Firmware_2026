@@ -1,0 +1,78 @@
+# ESP-IDF / Build artifacts
+/build/
+/build/**
+/project_description.json
+/compile_commands.json
+/CMakeCache.txt
+/CMakeFiles/
+/cmake_install.cmake
+/app-template.bin
+/app-template.elf
+*.bin
+*.elf
+*.map
+
+# SDK config (optional: ignore if you want to keep project-specific sdkconfig)
+# Uncomment the next line to ignore sdkconfig if you don't want it in git
+# /sdkconfig
+
+# VS Code
+.vscode/
+*.code-workspace
+
+# Eclipse/IDE
+.project
+.cproject
+.settings/
+
+# Python
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+.Python
+env/
+.venv/
+venv/
+.env
+
+# C/C++ Editor
+*.o
+*.obj
+*.exe
+*.dll
+*.lib
+*.a
+
+# Misc
+*.log
+*.swp
+*.swo
+.DS_Store
+Thumbs.db
+
+# Partition table / flasher
+/flash_args
+/flash_args.in
+/flasher_args.json
+
+# Temporary files
+*.tmp
+*.bak
+
+# Build system / generated
+/build/
+/*.dir
+
+# PlatformIO (if ever used)
+.pio/
+.pioenvs/
+
+# Coverage / test
+.coverage
+.pytest_cache/
+
+# Secret or local config
+/local_settings.py
+
+# End of file
