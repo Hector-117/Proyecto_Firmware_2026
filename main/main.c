@@ -1,12 +1,15 @@
-/*
-Añadiendo comentario para que me deje subirlo a github
-*/
-/*#include <stdio.h>
-#include <unistd.h>
-#include <stdbool.h>
-#include <freertos/FreeRTOS.h>
-#include <freertos/task.h>*/
-//#include "gpio_2026.h"
+/**
+ * @file main.c
+ * @brief App program.
+ *
+ * @details
+ * This file contains the App program which its a RGB 
+ * control via buttons 16 and 17
+ *
+ * @author Hector Said Herrera Niño
+ * @author José Francisco Padilla Torres
+ * @date 2026-06-01
+ */
 #include "bsp_board.h"
 
 
@@ -44,14 +47,14 @@ void app_main(void)
 		state_pin19 = bsp_pressed_button(BSP_PUSH_BUTTON_1);
 
 		if ((state_pin18 == false) && (state_pin18_old == true)){ //DETECCIÓN DE FALNCO DESCENDENTE EN PIN18
-			printf("Boton 1 presionado is this the rea lai\n");
+			printf("Boton 1 presionado lavos kayaaaaaa\n");
 			led_state_18[0] = !led_state_18[0]; //CAMBIO DE ESTADO DEL LED1
 			led_state_18[1] = !led_state_18[1]; //CAMBOI DE ESTADO DEL LED2
 		}
 		state_pin18_old = state_pin18;
 
 		if ((state_pin19 == false) && (state_pin19_old == true)){ //DETECCIÓN DE FALNCO DESCENDENTE EN PIN18
-			printf("Boton 2 presionado or is yos fentasi\n");
+			printf("Boton 2 presionado or is cravaaaaaa\n");
 			led_state_19[0] = !led_state_19[0]; //CAMBIO DE ESTADO DEL LED1
 			led_state_19[1] = !led_state_19[1]; //CAMBOI DE ESTADO DEL LED2
 		}

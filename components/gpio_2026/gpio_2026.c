@@ -1,7 +1,30 @@
+/**
+ * @file gpio_2026.c
+ * @brief Low-Level GPIO Driver for ESP32 source file.
+ *
+ * @details
+ * This file contains function implementations
+ * for direct GPIO control by ESP32 registers.
+ *
+ * @author Hector Said Herrera Niño
+ * @author José Francisco Padilla Torres
+ * @date 2026-06-01
+ *
+ * @note Based on ESP32 Technical Reference Manual v4.6. 
+ */
+ 
 #include <stdio.h>
 #include "gpio_2026.h"
 
-//designated initializers technique
+
+/**
+ * @brief Array for mapping GPIO with his IO_MUX_GPIOx register
+ *
+ * @details
+ * It let you to access to the register just knowing the GPIO
+ *
+ * @note designated initializers technique
+ */
 volatile uint32_t *LL_IO_MUX_x_REG[] = {
 	[LL_GPIO0]  = LL_IO_MUX_GPIO0_REG,
 	[LL_GPIO1]  = LL_IO_MUX_GPIO1_REG,
